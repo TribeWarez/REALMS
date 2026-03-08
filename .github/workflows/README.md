@@ -8,8 +8,8 @@
 Pull and run the published image (after workflow has run):
 
 ```bash
-docker pull ghcr.io/TribeWarez/realms-devkit:latest
-docker run -p 8888:8888 -v $(pwd):/workspace ghcr.io/TribeWarez/realms-devkit:latest
+docker pull ghcr.io/tribewarez/realms-devkit:latest
+docker run -p 8888:8888 -v $(pwd):/workspace ghcr.io/tribewarez/realms-devkit:latest
 ```
 
 Or build locally and run the cluster generator with the repo mounted:
