@@ -1,0 +1,59 @@
+# CI: test and validate Ch7 generators; optional run-in-container job
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    name: Test (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: "pip"
+
+      - name: Run Ch7 unit tests
+        run: python -m tests.test_pot_o_ch7 -v
+
+      - name: Validate Ch7 shard
+        run: |
+          python realms-devkit/scripts/validate_ch7_shard.py \
+            synthetic-pot-o-challenges-ch7-v1/synthetic-pot-o-challenges-ch7-v1.jsonl \
+            --max 30
+
+      - name: Run cluster generator (dry)
+        run: |
+          python generate_synthetic_pot_o_challenges_ch7_cluster.py \
+            --total 64 --workers 2 --worker-id 0 --output-dir ./out
+          test -f ./out/synthetic-pot-o-challenges-ch7-cluster-0000.jsonl
+          head -1 ./out/synthetic-pot-o-challenges-ch7-cluster-0000.jsonl | python -c "import json,sys; json.load(sys.stdin)"
+
+  test-in-container:
+    name: Test in container
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests inside Python container
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/repo" -w /repo python:3.11-slim bash -c "
+            python -m tests.test_pot_o_ch7 -v
+          "
+
+      - name: Validate shard in container
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/repo" -w /repo python:3.11-slim bash -c "
+            PYTHONPATH=/repo/realms-devkit python realms-devkit/scripts/validate_ch7_shard.py \
+              synthetic-pot-o-challenges-ch7-v1/synthetic-pot-o-challenges-ch7-v1.jsonl --max 20
+          "

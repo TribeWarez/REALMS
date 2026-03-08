@@ -82,12 +82,11 @@ def sample_graph() -> tuple[int, list[tuple[int, int]]]:
     return n, edges
 
 
-def minimal_cut_size(n: int, edges: list[tuple[int, int]]) -> int:
+def _minimal_cut_size_local(n: int, edges: list[tuple[int, int]]) -> int:
     """Minimum number of edges that separate the graph (bipartition). For small graphs we try partitions."""
     if n <= 1 or not edges:
         return 0
     best = len(edges)
-    # Try partitions: subset A of nodes 1..n
     for bits in range(1, (1 << n)):
         A = {i + 1 for i in range(n) if (bits >> i) & 1}
         if not A or A == set(range(1, n + 1)):
@@ -97,11 +96,23 @@ def minimal_cut_size(n: int, edges: list[tuple[int, int]]) -> int:
     return best
 
 
-def entropy_from_cut(num_edges_cut: int, bond_dim: int) -> float:
+def _entropy_from_cut_local(num_edges_cut: int, bond_dim: int) -> float:
     """S = |γ| log₂(d) in bits (manuscript §4)."""
     if num_edges_cut <= 0 or bond_dim <= 0:
         return 0.0
     return num_edges_cut * math.log2(bond_dim)
+
+
+try:
+    from realms_devkit.src.ch7_cluster_utils import (
+        entropy_from_cut_bits,
+        minimal_cut_size as _minimal_cut_size_devkit,
+    )
+    entropy_from_cut = entropy_from_cut_bits
+    minimal_cut_size = _minimal_cut_size_devkit
+except ImportError:
+    entropy_from_cut = _entropy_from_cut_local
+    minimal_cut_size = _minimal_cut_size_local
 
 
 def build_challenge_network(
