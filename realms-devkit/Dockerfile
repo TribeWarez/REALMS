@@ -11,6 +11,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install Jupyter server configuration (allows iframe embedding from any origin)
+RUN mkdir -p /etc/jupyter
+COPY jupyter_server_config.py /etc/jupyter/jupyter_server_config.py
+
 # Create a non-root user for running Jupyter
 RUN useradd -m -u 1000 jupyter \
     && chown -R jupyter:jupyter /workspace
