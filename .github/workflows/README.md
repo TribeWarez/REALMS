@@ -4,6 +4,8 @@ Workflows for [pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluste
 
 - **CI** (`ci.yml`): On push/PR to main/master — run Ch7 unit tests, validate Ch7 shard JSONL, run cluster generator (dry). One job runs the same tests inside a `python:3.11-slim` container.
 - **Docker** (`docker.yml`): Build `realms-devkit` image from `realms-devkit/Dockerfile`; run Ch7 tests and cluster generator in container. On push to main/master or tag `v*`, push image to GitHub Container Registry as `ghcr.io/<owner>/realms-devkit:latest` and `ghcr.io/<owner>/realms-devkit:<sha>`.
+- **Pages** (`pages.yml`): On push to main/master (when notebooks change) — convert `realms-devkit/notebooks/*.ipynb` to HTML with `nbconvert` and publish to GitHub Pages at `https://<org>.github.io/pot-o-ch7-cluster/`. Enable via **Settings → Pages → Source → GitHub Actions**.
+- **HF Space** (`hf-space.yml`): On push to main/master (when `realms-devkit/` changes) — push devkit files to the [Tribewarez/pot-o-ch7-cluster](https://huggingface.co/spaces/Tribewarez/pot-o-ch7-cluster) Hugging Face Docker Space and sync `JUPYTER_TOKEN` as a Space secret. Requires `HF_TOKEN` and `JUPYTER_TOKEN` repository secrets.
 
 ## Running in container
 
