@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/ci.yml/badge.svg)](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/ci.yml)
 [![Docker](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/docker.yml/badge.svg)](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/docker.yml)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/TribeWarez/pot-o-ch7-cluster/HEAD?labpath=realms-devkit%2Fnotebooks%2F02_tensor_network_entropy.ipynb)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/TribeWarez/pot-o-ch7-cluster)
 
 Clustered generator for **PoT-O Chapter 7** synthetic challenges — tensor dimensioning and networking effects from **Part IV — Information-Theoretic Foundation of Spacetime** (§3, §4, §7).
 
@@ -61,7 +63,8 @@ Or pull the published image (after CI has run):
 
 ```bash
 docker pull ghcr.io/tribewarez/realms-devkit:latest
-docker run -p 8888:8888 -v $(pwd):/workspace ghcr.io/tribewarez/realms-devkit:latest
+# Jupyter Lab on http://localhost:8888 (bound to localhost only)
+docker run -p 127.0.0.1:8888:8888 -v $(pwd):/workspace ghcr.io/tribewarez/realms-devkit:latest
 ```
 
 ## Repository Layout
@@ -96,6 +99,24 @@ Ch7 challenges extend the classic format with graph topology and bond dimensions
 ```
 
 See [CHALLENGE_FORMAT.md](CHALLENGE_FORMAT.md) for the full spec.
+
+## Hosting & cloud environments
+
+The repository has three layers: a **CLI data generator** (no server needed), **Jupyter notebooks** (interactive science), and a **Docker image** (full devkit). Free hosting options for each:
+
+| Platform | What runs | Free tier | Best for |
+|----------|-----------|-----------|----------|
+| **mybinder.org** | Jupyter notebooks (via `binder/requirements.txt`) | Unlimited (public repos) | Sharing notebooks with reviewers / community — click the Binder badge above |
+| **GitHub Pages** | Static HTML export of notebooks (auto-built by `pages.yml` workflow) | Free for public repos | Read-only notebook browsing at `https://tribewarez.github.io/pot-o-ch7-cluster/` |
+| **GitHub Codespaces** | Full `realms-devkit` container (Jupyter + VS Code) | Free quota for org members; 60h/month on free plan | Org team development — click the Codespaces badge above or open via GitHub UI |
+| **GitHub Container Registry (GHCR)** | `realms-devkit` Docker image, pushed by `docker.yml` CI | Free for public repos | Self-hosted or cloud `docker run`, pull from `ghcr.io/tribewarez/realms-devkit:latest` |
+| **Hugging Face Spaces (Docker)** | Full Jupyter Lab via Docker Space | Free CPU space | Public-facing Jupyter Lab; add `README.md` YAML frontmatter `sdk: docker` to `realms-devkit/` |
+| **Raspberry Pi / ESP32** | CLI generator (stdlib-only, no deps) | Hardware cost only | Distributed dataset generation at the edge |
+
+### Notes
+- **GitHub Pages** is enabled by the new `pages.yml` workflow. Go to **Settings → Pages → Source → GitHub Actions** to activate it for your repo.
+- **Binder** works immediately — `binder/requirements.txt` mirrors `realms-devkit/requirements.txt`. Cold-start takes ~2 min.
+- **Codespaces** uses `.devcontainer/devcontainer.json` pointing to the existing `realms-devkit/Dockerfile`. Jupyter Lab auto-opens on port 8888.
 
 ## Tests
 
