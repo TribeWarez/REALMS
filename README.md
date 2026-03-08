@@ -74,7 +74,6 @@ generate_synthetic_pot_o_challenges_ch7.py          # Ch7 single-file generator
 generate_synthetic_pot_o_challenges.py              # Classic v1 generator
 tests/                                              # Unit tests
 realms-devkit/                                      # Manuscript Part IV reference (in-repo; notebooks, Docker, scripts)
-pot-o-pathfinder-tiny-v1/                           # HF submodule: Tribewarez/pot-o-pathfinder-tiny-v1
 synthetic-pot-o-challenges-ch7-v1/                  # Ch7 starter dataset (100 examples)
 synthetic-pot-o-challenges-v1/                      # Classic starter dataset (100 examples)
 CHALLENGE_FORMAT.md                                 # Full challenge string spec
