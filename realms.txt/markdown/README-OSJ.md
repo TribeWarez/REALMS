@@ -1,6 +1,6 @@
 # Open Science Journal (OSJ) submission checklist
 
-This document supports submission of **manuscript-OSJ.md** to the [Open Science Journal](https://osjournal.org/submissions.html). Ensure every requirement below is met before submitting (including after converting to DOCX).
+This document supports submission of **manuscript-OSJ.md** (in `markdown/`) to the [Open Science Journal](https://osjournal.org/submissions.html). Ensure every requirement below is met before submitting (including after converting to DOCX). Build output goes to `dist/`; scripts are in `scripts/`.
 
 ## Style and format
 
@@ -49,11 +49,11 @@ This document supports submission of **manuscript-OSJ.md** to the [Open Science 
 ## Final steps before submission
 
 1. **Export to DOCX**  
-   From the repo root: `./export-OSJ-docx.sh` (or, with a custom reference doc: `./export-OSJ-docx.sh reference.docx`).  
-   Output: `manuscript-OSJ.docx`.
+   From the repo root: `./scripts/export-OSJ-docx.sh` (or, with a custom reference doc: `./scripts/export-OSJ-docx.sh path/to/reference.docx`).  
+   Output: `dist/manuscript-OSJ.docx`.
 
 2. **In Word**  
-   Open `manuscript-OSJ.docx` and before submission:
+   Open `dist/manuscript-OSJ.docx` and before submission:
    - Set **single spacing**: Layout / Paragraph → Line spacing: Single (or equivalent).
    - Add **page numbers** (e.g. Insert → Page Number).
    - Use a **standard font and size** (e.g. 12 pt Times New Roman or as per OSJ).
@@ -64,30 +64,30 @@ This document supports submission of **manuscript-OSJ.md** to the [Open Science 
    - **Caption**: Already in the manuscript text after the first citation; leave it there.  
    - **File**: Prepare the observer-realm diagram (e.g. export from Mermaid or redraw in a drawing tool). Upload it as a **separate file** at submission, named to match the citation (e.g. `Fig1.tif` or `Fig1.png`). Do not embed this file in the main DOCX.
 
-For the German version, run `de/export-OSJ-docx.sh` from the repo root (or from `de/`), use `de/manuscript-OSJ-de.md` as source; apply the same Word and figure steps to `manuscript-OSJ-de.docx` and upload "Abb. 1" as a separate file.
+For the German version, run `./scripts/export-OSJ-docx-de.sh` from the repo root; source: `markdown/de/manuscript-OSJ-de.md`; output: `dist/manuscript-OSJ-de.docx`. Apply the same Word and figure steps and upload "Abb. 1" as a separate file.
 
 ## Data reporting
 
-- [ ] If applicable: deposit data and metadata in an appropriate public repository; provide DOIs or accession numbers; ensure at least CC BY openness where required. provide DOIs or accession numbers; ensure at least CC BY openness where required.
+- [ ] If applicable: deposit data and metadata in an appropriate public repository; provide DOIs or accession numbers; ensure at least CC BY openness where required.
 
 ## Pandoc: generate DOCX from Markdown
 
-From the directory containing `manuscript-OSJ.md`, run `./export-OSJ-docx.sh` (see **Final steps before submission** above). If `reference-osj.docx` is present in the same directory, the script uses it for styling (e.g. single spacing, standard font); you can still add page numbers and complete author/references in Word. To use a different reference document: `./export-OSJ-docx.sh reference.docx`.
+From the repo root, run `./scripts/export-OSJ-docx.sh` (see **Final steps before submission** above). Source: `markdown/manuscript-OSJ.md`; output: `dist/manuscript-OSJ.docx`. If `reference-osj.docx` is present in `scripts/`, the script uses it for styling (e.g. single spacing, standard font); you can still add page numbers and complete author/references in Word. To use a different reference document: `./scripts/export-OSJ-docx.sh path/to/reference.docx`.
 
-Raw Pandoc commands:
-
-```bash
-pandoc manuscript-OSJ.md -o manuscript-OSJ.docx
-```
-
-Optional: use a reference DOCX for styling (e.g. `reference-osj.docx` or an OSJ template if provided by the journal):
+Raw Pandoc commands (from repo root):
 
 ```bash
-pandoc manuscript-OSJ.md -o manuscript-OSJ.docx --reference-doc=reference.docx
+pandoc markdown/manuscript-OSJ.md -o dist/manuscript-OSJ.docx
 ```
 
-Then open `manuscript-OSJ.docx` in Word and: (1) ensure the document is not locked or protected; (2) add page numbers; (3) set single spacing (Paragraph → Line spacing: Single); (4) use standard font and size; (5) convert display equations to MathType or Equation Editor if required; (6) complete author names, affiliations, and corresponding author email; (7) verify and complete the reference list.
+Optional: use a reference DOCX for styling (e.g. `scripts/reference-osj.docx` or an OSJ template if provided by the journal):
+
+```bash
+pandoc markdown/manuscript-OSJ.md -o dist/manuscript-OSJ.docx --reference-doc=scripts/reference.docx
+```
+
+Then open `dist/manuscript-OSJ.docx` in Word and: (1) ensure the document is not locked or protected; (2) add page numbers; (3) set single spacing (Paragraph → Line spacing: Single); (4) use standard font and size; (5) convert display equations to MathType or Equation Editor if required; (6) complete author names, affiliations, and corresponding author email; (7) verify and complete the reference list.
 
 ## German version (deutsche Fassung)
 
-A German OSJ-submittable version is in **de/manuscript-OSJ-de.md**, with **de/README-OSJ-de.md** (checklist and Pandoc instructions) and **de/export-OSJ-docx.sh** to generate `manuscript-OSJ-de.docx`. OSJ primarily accepts English; check journal guidelines if submitting the German manuscript.
+A German OSJ-submittable version is in **markdown/de/manuscript-OSJ-de.md**, with **markdown/de/README-OSJ-de.md** (checklist and Pandoc instructions). Run `./scripts/export-OSJ-docx-de.sh` from the repo root to generate `dist/manuscript-OSJ-de.docx`. OSJ primarily accepts English; check journal guidelines if submitting the German manuscript.

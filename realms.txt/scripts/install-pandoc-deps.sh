@@ -28,7 +28,7 @@ RECOMMENDED="
 if "$RECOMMENDED_ONLY"; then
   echo "Installing recommended set for PDF build (pdflatex + math)..."
   apt-get install -y $RECOMMENDED
-  echo "Done. Run ./build-pdf.sh to build the manuscript."
+  echo "Done. Run ./scripts/build-pdf.sh from the repo root to build the manuscript."
   exit 0
 fi
 

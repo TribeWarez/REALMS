@@ -1,36 +1,39 @@
 #!/usr/bin/env bash
 # Build combined German manuscript and PDF with title page, TOC, and keyword index.
 # Requires: pandoc, pdflatex (e.g. from TeX Live).
-# Run from the directory containing this script (realms.txt/).
+# Run from repo root: ./scripts/build-pdf-de.sh
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+MD="$REPO_ROOT/markdown/de"
+DIST="$REPO_ROOT/dist"
+COMBINED="$DIST/manuscript-combined-de.md"
+PDF="$DIST/manuscript-de.pdf"
 
-COMBINED="de/manuscript-combined.md"
-PDF="de/manuscript.pdf"
+mkdir -p "$DIST"
 
 # Combine: front matter + Part I (REALMS) + Part II (API) + Part III (Materialization) + Part IV (Information Spacetime) + Index
 {
-  cat "de/00-Titel-Vorwort-Inhalt.md"
+  cat "$MD/00-Titel-Vorwort-Inhalt.md"
   printf '\n\n'
   echo '# Teil I — Planck als Realm des aktuellen Beobachters'
   printf '\n\n'
-  tail -n +2 "de/REALMS.md"
+  tail -n +2 "$MD/REALMS.md"
   printf '\n\n'
   echo '# Teil II — API-Manipulation und Wellenlängen–Wahrnehmungs-Hypothese'
   printf '\n\n'
-  tail -n +2 "de/REALMS-API-Manipulation.md"
+  tail -n +2 "$MD/REALMS-API-Manipulation.md"
   printf '\n\n'
   echo '# Teil III — Materialisierungsthese'
   printf '\n\n'
-  tail -n +2 "de/REALMS-Materialization-Thesis.md"
+  tail -n +2 "$MD/REALMS-Materialization-Thesis.md"
   printf '\n\n'
   echo '# Teil IV — Informations-theoretische Grundlage der Raumzeit'
   printf '\n\n'
-  tail -n +2 "de/REALMS-Information-Spacetime.md"
+  tail -n +2 "$MD/REALMS-Information-Spacetime.md"
   printf '\n\n'
-  cat "de/99-Stichwortverzeichnis.md"
+  cat "$MD/99-Stichwortverzeichnis.md"
 } > "$COMBINED"
 
 # Build PDF with linked TOC, numbered sections, math via LaTeX

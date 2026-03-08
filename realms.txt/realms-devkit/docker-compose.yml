@@ -1,9 +1,0 @@
-# REALMS dev-kit: one-command Jupyter Lab with workspace mounted
-services:
-  devkit:
-    build: .
-    ports:
-      - "8888:8888"
-    volumes:
-      - .:/workspace
-    working_dir: /workspace

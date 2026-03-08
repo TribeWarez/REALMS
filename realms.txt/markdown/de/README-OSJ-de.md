@@ -4,7 +4,7 @@ Dieses Dokument unterstützt die Einreichung von **manuscript-OSJ-de.md** (deuts
 
 ## Stil und Format
 
-- [ ] **Dateiformat:** Manuskript in DOC, DOCX oder RTF. Word-Dokumente dürfen nicht geschützt oder gesperrt sein. `export-OSJ-docx.sh` oder Pandoc (siehe unten), dann in Word öffnen und als DOCX ohne Schutz speichern.
+- [ ] **Dateiformat:** Manuskript in DOC, DOCX oder RTF. Word-Dokumente dürfen nicht geschützt oder gesperrt sein. Von der Repo-Wurzel: `./scripts/export-OSJ-docx-de.sh` oder Pandoc (siehe unten); Ausgabe: `dist/manuscript-OSJ-de.docx`. In Word öffnen und als DOCX ohne Schutz speichern.
 - [ ] **Umfang:** Keine Beschränkung; Darstellung prägnant.
 - [ ] **Schrift:** In der finalen DOCX Standard-Schriftart und -größe verwenden.
 - [ ] **Überschriften:** Maximal 3 Ebenen; im Manuskript klar gekennzeichnet (Ebene 1: Hauptabschnitte; 2: Unterabschnitte; 3: Unter-Unterabschnitte). In manuscript-OSJ-de.md eingehalten.
@@ -52,16 +52,18 @@ Dieses Dokument unterstützt die Einreichung von **manuscript-OSJ-de.md** (deuts
 
 ## Pandoc: DOCX aus Markdown erzeugen
 
-Im Verzeichnis mit `manuscript-OSJ-de.md` (z. B. `de/`):
+Von der Repo-Wurzel: `./scripts/export-OSJ-docx-de.sh`. Quelle: `markdown/de/manuscript-OSJ-de.md`; Ausgabe: `dist/manuscript-OSJ-de.docx`.
+
+Raw Pandoc (von der Repo-Wurzel):
 
 ```bash
-pandoc manuscript-OSJ-de.md -o manuscript-OSJ-de.docx
+pandoc markdown/de/manuscript-OSJ-de.md -o dist/manuscript-OSJ-de.docx
 ```
 
 Optional mit Referenz-DOCX:
 
 ```bash
-pandoc manuscript-OSJ-de.md -o manuscript-OSJ-de.docx --reference-doc=reference.docx
+pandoc markdown/de/manuscript-OSJ-de.md -o dist/manuscript-OSJ-de.docx --reference-doc=reference.docx
 ```
 
-Anschließend manuscript-OSJ-de.docx in Word öffnen: (1) Dokument nicht schützen/sperren; (2) Seitenzahlen einfügen; (3) Zeilenabstand Einfach (Absatz → Zeilenabstand: Einfach); (4) Standard-Schriftart und -größe; (5) Display-Gleichungen ggf. in MathType/Equation Editor setzen; (6) Autoren, Zugehörigkeiten und E-Mail des Korrespondenzautors ergänzen; (7) Literaturliste prüfen und vervollständigen.
+Anschließend dist/manuscript-OSJ-de.docx in Word öffnen: (1) Dokument nicht schützen/sperren; (2) Seitenzahlen einfügen; (3) Zeilenabstand Einfach (Absatz → Zeilenabstand: Einfach); (4) Standard-Schriftart und -größe; (5) Display-Gleichungen ggf. in MathType/Equation Editor setzen; (6) Autoren, Zugehörigkeiten und E-Mail des Korrespondenzautors ergänzen; (7) Literaturliste prüfen und vervollständigen.

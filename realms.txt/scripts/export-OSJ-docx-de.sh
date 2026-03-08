@@ -1,13 +1,13 @@
 #!/bin/bash
-# Export manuscript-OSJ-de.md nach DOCX für Open Science Journal (deutsche Fassung).
-# Voraussetzung: pandoc (https://pandoc.org/)
-# Aufruf: ./export-OSJ-docx.sh [reference.docx]
+# Export manuscript-OSJ-de.md to DOCX for Open Science Journal (German version).
+# Requires: pandoc (https://pandoc.org/)
+# Run from repo root: ./scripts/export-OSJ-docx-de.sh [reference.docx]
 
 set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-cd "$SCRIPT_DIR"
-INPUT="manuscript-OSJ-de.md"
-OUTPUT="manuscript-OSJ-de.docx"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+INPUT="$REPO_ROOT/markdown/de/manuscript-OSJ-de.md"
+OUTPUT="$REPO_ROOT/dist/manuscript-OSJ-de.docx"
 
 if ! command -v pandoc &> /dev/null; then
   echo "Fehler: pandoc ist nicht installiert. Siehe https://pandoc.org/"
@@ -18,6 +18,8 @@ if [ ! -f "$INPUT" ]; then
   echo "Fehler: $INPUT nicht gefunden."
   exit 1
 fi
+
+mkdir -p "$REPO_ROOT/dist"
 
 if [ -n "$1" ] && [ -f "$1" ]; then
   echo "Referenzdokument: $1"
