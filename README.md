@@ -3,7 +3,6 @@
 [![CI](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/ci.yml/badge.svg)](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/ci.yml)
 [![Docker](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/docker.yml/badge.svg)](https://github.com/TribeWarez/pot-o-ch7-cluster/actions/workflows/docker.yml)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/TribeWarez/pot-o-ch7-cluster/HEAD?labpath=realms-devkit%2Fnotebooks%2F02_tensor_network_entropy.ipynb)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/TribeWarez/pot-o-ch7-cluster)
 
 Clustered generator for **PoT-O Chapter 7** synthetic challenges — tensor dimensioning and networking effects from **Part IV — Information-Theoretic Foundation of Spacetime** (§3, §4, §7).
 
