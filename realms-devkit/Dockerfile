@@ -11,6 +11,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Create a non-root user for running Jupyter
+RUN useradd -m -u 1000 jupyter \
+    && chown -R jupyter:jupyter /workspace
+USER jupyter
+
 EXPOSE 8888
 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--allow-root", "--no-browser"]
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser"]
