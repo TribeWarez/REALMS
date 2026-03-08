@@ -1,0 +1,65 @@
+# Build PDF and DOCX artifacts on tag push and attach them to the release.
+# Push a tag (e.g. git tag v1.0.0 && git push origin v1.0.0) to trigger.
+
+name: Build and release artifacts
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write  # create release and upload assets
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Pandoc
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y pandoc
+
+      - name: Install TeX Live (pdflatex + math)
+        run: |
+          sudo apt-get install -y \
+            texlive-latex-recommended \
+            texlive-latex-extra \
+            texlive-fonts-recommended
+
+      - name: Build PDF (EN)
+        run: ./scripts/build-pdf.sh
+
+      - name: Build PDF (DE)
+        run: ./scripts/build-pdf-de.sh
+
+      - name: Build DOCX (EN)
+        run: ./scripts/export-OSJ-docx.sh
+
+      - name: Build DOCX (DE)
+        run: ./scripts/export-OSJ-docx-de.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: |
+            dist/manuscript.pdf
+            dist/manuscript-de.pdf
+            dist/manuscript-OSJ.docx
+            dist/manuscript-OSJ-de.docx
+
+      - name: Create Release and attach assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/manuscript.pdf
+            dist/manuscript-de.pdf
+            dist/manuscript-OSJ.docx
+            dist/manuscript-OSJ-de.docx
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
