@@ -28,7 +28,7 @@ Ch7 challenge strings extend the classic format with optional:
 - `bond_dims=d` or `bond_dims=d1,d2,...` — bond dimension(s) for S = |γ| log d
 - `target_entropy=k` — target entropy (bits)
 
-See [CHALLENGE_FORMAT.md](../CHALLENGE_FORMAT.md) in the repo for the full spec.
+Full challenge spec: [CHALLENGE_FORMAT.md](https://github.com/TribeWarez/pot-o-ch7-cluster/blob/main/CHALLENGE_FORMAT.md) in [pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster).
 
 Example (network):
 ```json

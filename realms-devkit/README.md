@@ -21,9 +21,11 @@ docker compose up --build
 
 Then open `http://localhost:8888` (use the token printed in the logs).
 
+**Run all scripts (validation, etc.) in sequence:** from the devkit root run `python scripts/run_all.py`. Inside Docker: `docker compose run --rm devkit python scripts/run_all.py` (from repo root: `docker compose -f realms-devkit/docker-compose.yml run --rm devkit python scripts/run_all.py`).
+
 ## References
 
-- **Manuscript:** [manuscript-combined.md](../manuscript-combined.md) (and Part IV in [REALMS-Information-Spacetime.md](../REALMS-Information-Spacetime.md)).
+- **Manuscript (33-page REALMS proposal):** [TribeWarez/realms](https://github.com/TribeWarez/realms). Part IV (Information-Theoretic Foundation of Spacetime) is the focus of this devkit; clone that repo for the full combined manuscript or Part IV excerpt.
 - **Qiskit:** [IBM Quantum — Qiskit](https://www.ibm.com/quantum/qiskit) — install, ecosystem, `pip install qiskit`.
 - **IBM Quantum docs:** [Introduction | IBM Quantum Documentation](https://quantum.cloud.ibm.com/docs/en/guides) — quickstart, tutorials, execution.
 
@@ -62,6 +64,7 @@ realms-devkit/
 │   ├── tensor_network.py    # TN build, cut entropy
 │   └── ch7_cluster_utils.py # Stdlib-only S = |γ| log d, minimal_cut (for cluster generator)
 ├── scripts/
+│   ├── run_all.py            # Run all scripts in this directory in sequence
 │   └── validate_ch7_shard.py  # Validate Ch7 JSONL (target_entropy vs S = |γ| log d)
 └── notebooks/
     ├── 01_planck_and_bounds.ipynb

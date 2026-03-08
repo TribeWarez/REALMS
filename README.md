@@ -60,8 +60,8 @@ docker run --rm -v "$(pwd)":/workspace -w /workspace realms-devkit \
 Or pull the published image (after CI has run):
 
 ```bash
-docker pull ghcr.io/TribeWarez/realms-devkit:latest
-docker run -p 8888:8888 -v $(pwd):/workspace ghcr.io/TribeWarez/realms-devkit:latest
+docker pull ghcr.io/tribewarez/realms-devkit:latest
+docker run -p 8888:8888 -v $(pwd):/workspace ghcr.io/tribewarez/realms-devkit:latest
 ```
 
 ## Repository Layout
@@ -71,8 +71,8 @@ generate_synthetic_pot_o_challenges_ch7_cluster.py  # Cluster generator (main)
 generate_synthetic_pot_o_challenges_ch7.py          # Ch7 single-file generator
 generate_synthetic_pot_o_challenges.py              # Classic v1 generator
 tests/                                              # Unit tests
-realms-devkit/                                      # Manuscript Part IV reference (submodule)
-pot-o-pathfinder-tiny-v1/                           # Model submodule (HF)
+realms-devkit/                                      # Manuscript Part IV reference (in-repo; notebooks, Docker, scripts)
+pot-o-pathfinder-tiny-v1/                           # HF submodule: Tribewarez/pot-o-pathfinder-tiny-v1
 synthetic-pot-o-challenges-ch7-v1/                  # Ch7 starter dataset (100 examples)
 synthetic-pot-o-challenges-v1/                      # Classic starter dataset (100 examples)
 CHALLENGE_FORMAT.md                                 # Full challenge string spec
@@ -105,10 +105,9 @@ python -m tests.test_pot_o_ch7 -v
 
 ## Reference
 
-Manuscript **Part IV — Information-Theoretic Foundation of Spacetime**:
-- §3 Information network structure: G=(V,E), tensor network, minimal cut
-- §4 Tensor network model: S = |γ| log d
-- §7 Spacetime dynamics and information Lagrangian
+- **Manuscript (33-page REALMS proposal):** [TribeWarez/realms](https://github.com/TribeWarez/realms)
+- **Tribewarez on Hugging Face:** [huggingface.co/Tribewarez](https://huggingface.co/Tribewarez)
+- Manuscript **Part IV — Information-Theoretic Foundation of Spacetime:** §3 Information network structure (G=(V,E), tensor network, minimal cut); §4 Tensor network model (S = |γ| log d); §7 Spacetime dynamics and information Lagrangian
 
 ---
 

@@ -35,7 +35,7 @@ task_categories:
 
 ## Related: Ch7 (tensor dimensioning + networking)
 
-[synthetic-pot-o-challenges-ch7-v1](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) adds challenges that prove tensor dimensioning and networking effects from the manuscript **Part IV — Information-Theoretic Foundation of Spacetime** (§3, §4, §7). See `CHALLENGE_FORMAT.md` in the repo.
+[synthetic-pot-o-challenges-ch7-v1](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) adds challenges that prove tensor dimensioning and networking effects from the manuscript **Part IV — Information-Theoretic Foundation of Spacetime** (§3, §4, §7). See [CHALLENGE_FORMAT.md](https://github.com/TribeWarez/pot-o-ch7-cluster/blob/main/CHALLENGE_FORMAT.md) in [pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster).
 
 ## Next Iterations
 

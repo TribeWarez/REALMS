@@ -39,6 +39,7 @@ Then on a Pi or server: collect shards and push each to `Tribewarez/synthetic-po
 
 ## Links
 
+- **Manuscript (REALMS):** [TribeWarez/realms](https://github.com/TribeWarez/realms).
 - **Model:** [pot-o-pathfinder-tiny-v1](https://huggingface.co/Tribewarez/pot-o-pathfinder-tiny-v1) — path prediction on PoT-O challenges (ESP32, mobile, edge).
 - **Dataset (starter):** [synthetic-pot-o-challenges-ch7-v1](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1).
 - **Part IV reference:** [realms-devkit](realms-devkit/) — tensor networks, entropy bounds, information Lagrangian (notebooks + Docker).

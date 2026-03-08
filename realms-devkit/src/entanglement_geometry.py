@@ -32,7 +32,9 @@ def mutual_information(S_A: float, S_B: float, S_AB: float) -> float:
 
 
 def effective_distance(I_AB: float, eps: float = 1e-10) -> float:
-    """d(A,B) ~ -log I(A:B). Use eps to avoid log(0)."""
+    """d(A,B) ~ -log I(A:B) (manuscript Part IV §2.3). Returns value in nats.
+    Use eps to avoid log(0). Note: d can be negative when I(A:B) > 1 (e.g. Bell pair
+    has I = 2 ln(2) nats); for a positive-distance interpretation use bits or normalize I."""
     I = max(I_AB, eps)
     return -np.log(I)
 

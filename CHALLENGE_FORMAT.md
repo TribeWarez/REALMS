@@ -75,7 +75,5 @@ contract:bond_4 -> cut:2 -> quant:4bit -> I:0.38 -> score:0.36
 
 ## Reference
 
-Manuscript **Part IV — Information-Theoretic Foundation of Spacetime**:
-- §3 Information network structure: G=(V,E), tensor network, minimal cut structure.
-- §4 Tensor network model: T^{i_1..i_k}, bond dim d, S = |γ| log d.
-- §7 Spacetime dynamics and information Lagrangian: I(i:j), L_info = Σ J_ij I(i:j) − λ Σ S_i.
+- **Manuscript repo:** [TribeWarez/realms](https://github.com/TribeWarez/realms).
+- Manuscript **Part IV — Information-Theoretic Foundation of Spacetime:** §3 Information network structure (G=(V,E), tensor network, minimal cut); §4 Tensor network model (T^{i_1..i_k}, bond dim d, S = |γ| log d); §7 Spacetime dynamics and information Lagrangian (I(i:j), L_info = Σ J_ij I(i:j) − λ Σ S_i).
