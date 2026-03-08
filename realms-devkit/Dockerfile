@@ -11,9 +11,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install Jupyter server configuration (allows iframe embedding from any origin)
+# Install Jupyter server configuration (allows iframe embedding from HuggingFace)
 RUN mkdir -p /etc/jupyter
 COPY jupyter_server_config.py /etc/jupyter/jupyter_server_config.py
+# Point JUPYTER_CONFIG_DIR at the system config dir so the file is always found
+# even if the home-directory search path is redirected inside the container.
+ENV JUPYTER_CONFIG_DIR=/etc/jupyter
 
 # Create a non-root user for running Jupyter
 RUN useradd -m -u 1000 jupyter \
@@ -22,4 +25,4 @@ USER jupyter
 
 EXPOSE 8888
 
-CMD ["sh", "-c", "exec jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --NotebookApp.token=${JUPYTER_TOKEN:-} --NotebookApp.password=''"]
+CMD ["sh", "-c", "exec jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --ServerApp.token=${JUPYTER_TOKEN:-} --ServerApp.password=''"]
