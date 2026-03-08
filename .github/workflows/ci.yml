@@ -21,7 +21,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-          cache: "pip"
 
       - name: Run Ch7 unit tests
         run: python -m tests.test_pot_o_ch7 -v
