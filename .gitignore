@@ -14,3 +14,14 @@ build/
 # Local / env
 .env
 *.local
+
+# Jupyter
+**/.ipynb_checkpoints/
+
+# IDE
+.vscode/
+
+# ESP-IDF (Materializer-E33)
+realms-devkit/Materializer-E33/sdkconfig
+realms-devkit/Materializer-E33/managed_components/
+realms-devkit/Materializer-E33/dependencies.lock

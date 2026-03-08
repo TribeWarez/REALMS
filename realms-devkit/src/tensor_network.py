@@ -13,28 +13,54 @@ except ImportError:
 
 def build_chain_bell_pairs(L: int, d: int = 2):
     """
-    Build 1D chain of L sites with maximally entangled pairs on consecutive bonds.
-    For L=2k sites, state is (|Φ+⟩)^⊗k with |Φ+⟩ = (1/√d) Σ_i |i⟩|i⟩.
-    Returns MPS and list of (bond_index, num_bonds_cut, expected_S).
+    Build 1D chain of L sites (currently GHZ state).
+    Returns MPS. For GHZ, entropy at every bond is 1 bit (ln(2) nats); S(expected) = |γ| ln(2) does not match.
     """
     if qtn is None:
         raise ImportError("quimb is required. Install with: pip install quimb")
-    # MPS_ghz_state(L) gives GHZ: entropy 0 at ends, log(2) at middle bond.
-    # For "chain of Bells" we want product of Bell pairs. Build as MPS with bond dim d:
-    # Each tensor [left_bond, phys, right_bond]; for Bell pair chain, bond dim = d.
-    psi = qtn.MPS_ghz_state(L, dtype=complex)
-    # GHZ has one "global" entanglement: S(bond j) = min(j, L-j)*log(2) for half chain.
-    # So at bond 1 (between site 0 and 1): for GHZ, left part is 1 site, right is L-1 -> S = log(2) (Schmidt rank 2).
-    # We'll compute entropy at each bond and compare to expected (manuscript: S = |γ| log d).
+    return qtn.MPS_ghz_state(L, dtype=complex)
+
+
+def build_chain_bell_pairs_rainbow(L: int, d: int = 2):
+    """
+    Build MPS for a chain where entanglement follows S = |γ| log d: "rainbow" state
+    with Bell pairs (0, L-1), (1, L-2), ... so that at bond i the entropy is
+    min(i, L - 1 - i) * ln(d) nats (after bits→nats conversion).
+    Returns quimb MPS. Used to verify S(computed) ≈ S(expected) numerically.
+    """
+    if qtn is None:
+        raise ImportError("quimb is required. Install with: pip install quimb")
+    if d != 2:
+        raise NotImplementedError("build_chain_bell_pairs_rainbow only implemented for d=2")
+    # State: product of Bell pairs (|00⟩+|11⟩)/√2 on (0,L-1), (1,L-2), ..., (k-1,k) for L=2k.
+    # Sites 0..n_pairs-1 and L-1..n_pairs are paired: site i and L-1-i have same digit.
+    n_pairs = L // 2
+    state = np.zeros((d ** L,), dtype=complex)
+    norm = 1.0 / np.sqrt(d ** n_pairs)
+    for config in range(d ** n_pairs):
+        # config = s0 + s1*d + s2*d^2 + ... (n_pairs digits). Site i gets digit (config // d^i) % d; site L-1-i same.
+        flat_idx = 0
+        for site in range(L):
+            partner = min(site, L - 1 - site)
+            digit = (config // (d ** partner)) % d
+            flat_idx += digit * (d ** site)
+        state[flat_idx] = norm
+    # quimb may expect shape (d,d,...,d); try 1D with dims (API may vary)
+    try:
+        psi = qtn.MPS_from_dense(state, dims=[d] * L)
+    except Exception:
+        psi = qtn.MPS_from_dense(state.reshape([d] * L), dims=[d] * L)
     return psi
 
 
 def entropy_at_bond(psi, bond: int):
-    """Von Neumann entropy at bond (between site bond and bond+1). Returns entropy in nats."""
+    """Von Neumann entropy at bond (between site bond and bond+1). Returns entropy in nats.
+    quimb returns base-2 entropy (bits); we convert to nats for consistency with cut_size_to_entropy.
+    """
     if qtn is None:
         raise ImportError("quimb is required")
-    # quimb MPS: .entropy(bond_index) for bond between site bond and bond+1
-    return float(psi.entropy(bond))
+    S_bits = float(psi.entropy(bond))
+    return S_bits * np.log(2)
 
 
 def cut_size_to_entropy(num_bonds: int, d: int = 2) -> float:
@@ -42,24 +68,34 @@ def cut_size_to_entropy(num_bonds: int, d: int = 2) -> float:
     return num_bonds * np.log(d)
 
 
-def verify_s_equals_gamma_log_d(chain_length: int = 6):
+def verify_s_equals_gamma_log_d(chain_length: int = 6, psi=None, d: int = 2):
     """
-    Build chain (e.g. GHZ) and verify that entropy at a cut equals number of bonds cut × log(d).
-    For GHZ state, cutting bond j gives S = min(j, L-j) * log(2) (Schmidt rank 2^(min(j,L-j))).
-    So at bond 1: S = log(2) = 1 bond × log(2). At bond 2: S = 2*log(2) for L=6, etc.
-    Returns list of (bond, S_computed, |γ|, expected_S).
+    Verify that entropy at a cut equals number of bonds cut × log(d) (S = |γ| log d).
+    If psi is None, builds GHZ(chain_length). Otherwise uses provided MPS (chain_length = psi.L).
+    quimb MPS.entropy(i) requires 0 < i < L (1-based bond index). Bond i is between site i-1 and i.
+    Returns list of (bond_1based, S_computed, |γ|, expected_S). All entropies in nats.
     """
     if qtn is None:
         return []
-    psi = build_chain_bell_pairs(chain_length)
-    d = 2
+    if psi is None:
+        psi = build_chain_bell_pairs(chain_length)
+    L = psi.L
     results = []
-    for bond in range(chain_length - 1):
+    for bond in range(1, L):
         S = entropy_at_bond(psi, bond)
-        # For GHZ(L), effective |γ| at bond j is min(j+1, L-j-1) (size of smaller partition in qubits).
-        left_sites = bond + 1
-        right_sites = chain_length - left_sites
-        gamma = min(left_sites, right_sites)  # number of Bell pairs crossing cut in GHZ
+        gamma = min(bond, L - bond)
         expected = cut_size_to_entropy(gamma, d)
         results.append((bond, S, gamma, expected))
     return results
+
+
+def verify_s_equals_gamma_log_d_rainbow(chain_length: int = 6):
+    """
+    Build rainbow (Bell-pair) chain and verify S(computed) ≈ S(expected) for S = |γ| log d.
+    Returns (psi, results) with results as from verify_s_equals_gamma_log_d.
+    """
+    if qtn is None:
+        return None, []
+    psi = build_chain_bell_pairs_rainbow(chain_length)
+    results = verify_s_equals_gamma_log_d(chain_length=chain_length, psi=psi, d=2)
+    return psi, results

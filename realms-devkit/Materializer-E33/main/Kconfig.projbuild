@@ -1,0 +1,19 @@
+# Materializer-E33 main component options (GPIO and flicker frequency)
+
+menu "Materializer-E33"
+
+    config MATERIALIZER_LED_GPIO
+        int "LED GPIO number"
+        default 2
+        range 0 39
+        help
+            GPIO used for LED output (e.g. 2 for onboard LED on many dev boards).
+
+    config MATERIALIZER_FLICKER_HZ
+        int "Flicker frequency (Hz)"
+        default 40
+        range 1 120
+        help
+            LED flicker rate: 10 = Alpha band, 40 = Gamma band, 60-120 = flicker fusion.
+
+endmenu

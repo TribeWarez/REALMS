@@ -1,0 +1,15 @@
+# Flicker driver component (Materializer-E33)
+# LED flicker for REALMS Part III materialization thesis.
+# GPIO and frequency are passed at runtime via flicker_start(); no config here.
+# Future: option to use external stimulus clock input (GPIO34/35).
+
+menu "Flicker driver"
+
+    # Placeholder for future options, e.g.:
+    # config FLICKER_USE_EXTERNAL_CLOCK
+    #     bool "Use external stimulus clock for timing"
+    #     default n
+    #     help
+    #         When enabled, derive flicker rate from oscillator on GPIO34/35 instead of esp_timer.
+
+endmenu

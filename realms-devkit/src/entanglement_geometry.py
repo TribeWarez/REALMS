@@ -83,16 +83,17 @@ def from_qiskit_statevector(statevector, qubits_A: list, qubits_B: list):
 def rt_toy_entropy_vs_boundary(psi_mps, site_labels=None):
     """
     Ryu–Takayanagi toy: for 1D MPS, S(region A) = entropy at cut = f(boundary size).
-    For MPS, boundary size = 1 (one bond). So S(A) should scale with number of bonds cut.
     psi_mps: quimb MPS. Returns list of (n_sites_A, S_A) for n_sites_A = 1, 2, ..., L-1.
+    quimb MPS.entropy(i) requires 0 < i < L; bond i is between site i-1 and i, so left block has i sites.
     """
     if not _quimb_available:
         return []
     L = psi_mps.L
     out = []
-    for bond in range(L - 1):
-        S = float(psi_mps.entropy(bond))
-        out.append((bond + 1, S))  # n_sites in left block = bond + 1
+    for bond in range(1, L):  # quimb: bond index 1..L-1
+        S_bits = float(psi_mps.entropy(bond))
+        S_nats = S_bits * np.log(2)
+        out.append((bond, S_nats))  # n_sites in left block = bond; S in nats
     return out
 
 
