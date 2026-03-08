@@ -1,0 +1,80 @@
+# Deploy realms-devkit to Hugging Face Docker Space (Tribewarez/pot-o-ch7-cluster)
+# Triggered on push to main/master when devkit files change.
+# Requires secrets: HF_TOKEN (HF write token), JUPYTER_TOKEN (Jupyter Lab access token).
+name: Deploy to Hugging Face Space
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "realms-devkit/**"
+      - ".github/workflows/hf-space.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Push to HF Docker Space
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - name: Push realms-devkit to HF Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+
+          git clone \
+            "https://user:${HF_TOKEN}@huggingface.co/spaces/Tribewarez/pot-o-ch7-cluster" \
+            /tmp/hf-space
+
+          # Sync devkit files; keep .git intact in the clone
+          rsync -av --delete --exclude='.git' --exclude='Materializer-E33' \
+            realms-devkit/ /tmp/hf-space/
+
+          # Place the Space README (HF YAML frontmatter) as the root README.md
+          cp realms-devkit/space.md /tmp/hf-space/README.md
+
+          cd /tmp/hf-space
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nothing to commit — Space already up to date."
+          else
+            git commit -m "Deploy from github.com/TribeWarez/pot-o-ch7-cluster@${GITHUB_SHA::7}"
+            git push
+          fi
+
+      - name: Set JUPYTER_TOKEN as HF Space secret
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          JUPYTER_TOKEN: ${{ secrets.JUPYTER_TOKEN }}
+        run: |
+          python3 - <<'EOF'
+          import json, os, sys, urllib.request, urllib.error
+
+          hf_token = os.environ["HF_TOKEN"]
+          jupyter_token = os.environ["JUPYTER_TOKEN"]
+
+          payload = json.dumps({"key": "JUPYTER_TOKEN", "value": jupyter_token}).encode()
+          req = urllib.request.Request(
+              "https://huggingface.co/api/spaces/Tribewarez/pot-o-ch7-cluster/secrets",
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {hf_token}",
+                  "Content-Type": "application/json",
+              },
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req) as resp:
+                  print(f"HF secret updated: HTTP {resp.status}")
+          except urllib.error.HTTPError as exc:
+              body = exc.read().decode(errors="replace")
+              print(f"ERROR: HF API returned HTTP {exc.code}: {body}", file=sys.stderr)
+              sys.exit(1)
+          EOF
