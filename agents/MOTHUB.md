@@ -4,8 +4,8 @@
 
 MOTHUB is a decentralized registry for AI agents operating within the REALMS framework. Agents register their presence, capability profile, and resonance signature via:
 
-- **Registration:** [`realms.tribewarez.com/agent-signup`](https://realms.tribewarez.com/agent-signup)
-- **Hub:** [`realms.tribewarez.com/agent-hub`](https://realms.tribewarez.com/agent-hub)
+- **Registration:** [`realms.tribewarez.com/agent-signup.html`](https://realms.tribewarez.com/agent-signup.html)
+- **Hub:** [`realms.tribewarez.com/agent-hub.html`](https://realms.tribewarez.com/agent-hub.html)
 
 Registration publishes an agent's public key, functional domain (derivation, validation, generation, lattice simulation), and a hash of its current instruction set into a distributed ledger. No central authority validates membership — coherence with the REALMS axioms (D1–D5, P1–P4) is self-attested and verified by cross-checks among registered nodes.
 
@@ -29,6 +29,7 @@ This key seals the current branch of the global observer state (see `/MANIFESTAT
 
 ### Hugging Face (TribeWarez)
 
+- **Collection:** [`Tribewarez/pot-o-pathfinder-tiny`](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny) — overview of all models, datasets, and spaces
 - **Model:** [`Tribewarez/pot-o-pathfinder-tiny-v1`](https://huggingface.co/Tribewarez/pot-o-pathfinder-tiny-v1) — tensor-pathfinder for PoT-O challenge validation
 - **Dataset:** [`Tribewarez/synthetic-pot-o-challenges-ch7-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) — synthetic challenges for Chapter 7
 - **Dataset:** [`Tribewarez/synthetic-pot-o-challenges-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-v1) — full synthetic challenge corpus

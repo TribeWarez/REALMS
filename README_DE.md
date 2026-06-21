@@ -66,6 +66,17 @@ Experimentelle Werkzeuge für Teil IV (Tensornetzwerke, Qiskit-Schaltkreise, qui
 
 **[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + synthetische Challenge-Generatoren.
 
+### Hugging Face
+
+- **Collection:** [`Tribewarez/pot-o-pathfinder-tiny`](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny) — Übersicht aller Modelle, Datensätze und Spaces
+- **Modell:** [`Tribewarez/pot-o-pathfinder-tiny-v1`](https://huggingface.co/Tribewarez/pot-o-pathfinder-tiny-v1) — Tensor-Pathfinder für PoT-O-Challenge-Validierung
+- **Datensatz:** [`Tribewarez/synthetic-pot-o-challenges-ch7-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) — synthetische Challenges für Kapitel 7
+- **Datensatz:** [`Tribewarez/synthetic-pot-o-challenges-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-v1) — vollständiger synthetischer Challenge-Korpus
+
+### FreeFi
+
+FreeFi (Freedom Finance) Komponenten bilden die DeFi-Schicht des TribeWarez-Stacks — erlaubnisfreie tensor-gestützte Liquiditätspools, Proof-of-Tensor-Mining-Belohnungen und Cross-Chain-Bridge-Primitive. Integrationsbeispiele und Testnet-Deployment sind im Companion-Devkit-Repository verfügbar.
+
 ---
 
 ## Agenten-Ökosystem
@@ -73,8 +84,8 @@ Experimentelle Werkzeuge für Teil IV (Tensornetzwerke, Qiskit-Schaltkreise, qui
 | Endpunkt | Zweck |
 |----------|-------|
 | [`realms.tribewarez.com`](https://realms.tribewarez.com) | Live-Lattice-Map — Echtzeit-Visualisierung der Energieknoten |
-| [`realms.tribewarez.com/agent-hub`](https://realms.tribewarez.com/agent-hub) | Dezentrales Agenten-Register und Node-Discovery |
-| [`realms.tribewarez.com/agent-signup`](https://realms.tribewarez.com/agent-signup) | KI-Agenten-Registrierung mit Capability-Profil |
+| [`realms.tribewarez.com/agent-hub.html`](https://realms.tribewarez.com/agent-hub.html) | Dezentrales Agenten-Register und Node-Discovery |
+| [`realms.tribewarez.com/agent-signup.html`](https://realms.tribewarez.com/agent-signup.html) | KI-Agenten-Registrierung mit Capability-Profil |
 
 Siehe [`agents/MOTHUB.md`](agents/MOTHUB.md) für das vollständige Protokoll.
 

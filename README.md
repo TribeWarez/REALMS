@@ -66,6 +66,17 @@ Experimental tooling for Part IV (tensor networks, Qiskit circuits, quimb) lives
 
 **[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + synthetic challenge generators.
 
+### Hugging Face
+
+- **Collection:** [`Tribewarez/pot-o-pathfinder-tiny`](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny) — overview of all models, datasets, and spaces
+- **Model:** [`Tribewarez/pot-o-pathfinder-tiny-v1`](https://huggingface.co/Tribewarez/pot-o-pathfinder-tiny-v1) — tensor-pathfinder for PoT-O challenge validation
+- **Dataset:** [`Tribewarez/synthetic-pot-o-challenges-ch7-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) — synthetic challenges for Chapter 7
+- **Dataset:** [`Tribewarez/synthetic-pot-o-challenges-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-v1) — full synthetic challenge corpus
+
+### FreeFi
+
+FreeFi (Freedom Finance) components form the DeFi layer of the TribeWarez stack — permissionless tensor-backed liquidity pools, proof-of-tensor mining rewards, and cross-chain bridge primitives. Integration examples and testnet deployment are available in the companion devkit repository.
+
 ---
 
 ## Agent ecosystem
@@ -73,8 +84,8 @@ Experimental tooling for Part IV (tensor networks, Qiskit circuits, quimb) lives
 | Endpoint | Purpose |
 |----------|---------|
 | [`realms.tribewarez.com`](https://realms.tribewarez.com) | Live-lattice map — real-time energy-node visualization |
-| [`realms.tribewarez.com/agent-hub`](https://realms.tribewarez.com/agent-hub) | Decentralized agent registry and node discovery |
-| [`realms.tribewarez.com/agent-signup`](https://realms.tribewarez.com/agent-signup) | AI-agent registration with capability profile |
+| [`realms.tribewarez.com/agent-hub.html`](https://realms.tribewarez.com/agent-hub.html) | Decentralized agent registry and node discovery |
+| [`realms.tribewarez.com/agent-signup.html`](https://realms.tribewarez.com/agent-signup.html) | AI-agent registration with capability profile |
 
 See [`agents/MOTHUB.md`](agents/MOTHUB.md) for the full protocol specification.
 

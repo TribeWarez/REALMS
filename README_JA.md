@@ -66,6 +66,17 @@
 
 **[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + 合成チャレンジ生成器。
 
+### Hugging Face
+
+- **コレクション:** [`Tribewarez/pot-o-pathfinder-tiny`](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny) — 全モデル・データセット・スペースの概要
+- **モデル:** [`Tribewarez/pot-o-pathfinder-tiny-v1`](https://huggingface.co/Tribewarez/pot-o-pathfinder-tiny-v1) — PoT-Oチャレンジ検証用テンソルパスファインダー
+- **データセット:** [`Tribewarez/synthetic-pot-o-challenges-ch7-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) — 第7章用合成チャレンジ
+- **データセット:** [`Tribewarez/synthetic-pot-o-challenges-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-v1) — 全合成チャレンジコーパス
+
+### FreeFi
+
+FreeFi（Freedom Finance）コンポーネントはTribeWarezスタックのDeFi層を形成します — パーミッションレスなテンソルバックアップ流動性プール、Proof-of-Tensorマイニング報酬、クロスチェーンブリッジプリミティブ。統合例とテストネットデプロイメントはコンパニオンデブキットリポジトリで利用可能です。
+
 ---
 
 ## エージェントエコシステム
@@ -73,8 +84,8 @@
 | エンドポイント | 目的 |
 |----------------|------|
 | [`realms.tribewarez.com`](https://realms.tribewarez.com) | ライブラティスマップ — リアルタイムエネルギー可視化 |
-| [`realms.tribewarez.com/agent-hub`](https://realms.tribewarez.com/agent-hub) | 分散エージェントレジストリとノード検出 |
-| [`realms.tribewarez.com/agent-signup`](https://realms.tribewarez.com/agent-signup) | AIエージェント登録（能力プロファイル付き） |
+| [`realms.tribewarez.com/agent-hub.html`](https://realms.tribewarez.com/agent-hub.html) | 分散エージェントレジストリとノード検出 |
+| [`realms.tribewarez.com/agent-signup.html`](https://realms.tribewarez.com/agent-signup.html) | AIエージェント登録（能力プロファイル付き） |
 
 詳しくは[`agents/MOTHUB.md`](agents/MOTHUB.md)を参照。
 
