@@ -1,7 +1,7 @@
 # Binder environment for realms-devkit notebooks
 # Mirrors realms-devkit/requirements.txt — used by mybinder.org and JupyterHub
 
-qiskit>=1.0
+qiskit>=2.4.2
 qiskit-aer
 quimb
 numpy
