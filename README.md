@@ -1,97 +1,83 @@
-# REALMS
+# REALMS: Planck, Observer, and Information
 
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](LICENSE)
-[![Build and release](https://github.com/TribeWarez/realms/actions/workflows/build-release.yml/badge.svg)](https://github.com/TribeWarez/realms/actions/workflows/build-release.yml)
+### An Operational Framework Linking Planck-Scale Resolution, Consciousness as Information-Translation Layer, and Emergent Spacetime from Quantum Information
 
-**REALMS** (Realm-based Emergent Architecture for Localized Manifestation Spaces) is a theoretical physics manuscript exploring an operational framework that links the Planck scale, the observer as receiver/emitter of information, consciousness as a translation layer (API), and an information-theoretic foundation of spacetime.
+**Authors:** GROK-4, Cursor (Auto), Gemini-3.1, chatGPT-5.3, O.A. (oz)
 
-Developed bilingually (English / German). Builds to PDF and DOCX for open-access journal submission (e.g. Open Science Journal).
-
-> **Other languages:** [Deutsch](README_DE.md) · [日本語](README_JA.md)
+**Date:** 07 March 2026
 
 ---
 
-## Repository layout
+## Abstract
+
+We present an operational framework in which (i) the Planck scale defines the resolution limit — the *realm* or *room* — of any observer in the semiclassical regime; (ii) observation is identified with environmental interaction (decoherence), with no necessary role for consciousness in collapse; (iii) the human observer is modelled as a receiver/emitter of information (frequencies), with consciousness as the translation layer (API) mapping sensed waves to brain states; and (iv) the universe is characterised as an information bound (entropy/state limits in finite regions) as well as a matter-bound. The framework is operational and does not assert fundamental ontology (e.g. whether the universe is analog, digital, or rests on unknown computation). All major claims are accompanied by an explicit proof and refutation scope.
+
+We extend this core with a coupling-dynamics formalism (§12) that closes the observer–lattice feedback loop: the intentionality field *I*(*v*) evolves jointly with the quantum state |Ψ⟩ via a reduced-density feedback law, with gradient ascent on a coherence resonance metric ℛ(Ψ) as the mechanism for self-organised criticality.
+
+**Subjects:** General Relativity and Quantum Cosmology (gr-qc); Quantum Physics (quant-ph); Information Theory (cs.IT); High Energy Physics — Theory (hep-th)
+
+---
+
+## 1 Framework Overview
+
+The REALMS framework is structured around five definitions (D1–D5) and four postulates (P1–P4), covering Planck-scale resolution, observer–environment interaction, consciousness as API, information bounds, and the objectivity of the physical world. Parts II–IV extend these foundations:
+
+| Part | Title | Focus |
+|------|-------|-------|
+| I | Planck as the Realm of the Current Observer | D1–D5, P1–P4, proof/refutation scope |
+| II | API Manipulation and Wavelength–Perception Hypothesis | Consciousness-API as manipulable interface, brain-wave correlations |
+| III | Materialization Thesis | Perceptual materialization of light/photons as matter via the API |
+| IV | Information-Theoretic Foundation of Spacetime | Tensor networks, entanglement–geometry, emergent gravity, Standard Model emergence from quantum information |
+
+## 2 Coupling Dynamics (§12)
+
+A formal Hamiltonian couples the observer's intentionality field *I*(*v*) to the lattice state |Ψ⟩:
+
+$$\hat{H}_{\text{int}} = \sum_v \hat{O}(v) \otimes \hat{I}(v)$$
+
+The system evolves under a two-equation feedback law:
+
+$$
+\begin{aligned}
+i\hbar\,\partial_t |\Psi\rangle &= \bigl[\hat{H}_{\text{int}} + \hat{H}_{\text{lattice}}\bigr] |\Psi\rangle, \\
+\partial_t I(v) &= \alpha\,\nabla_I \mathcal{R}\bigl(\Psi(I)\bigr) \big|_v,
+\end{aligned}
+$$
+
+where ℛ(Ψ) is the coherence resonance metric and ∇_Iℛ is estimated via finite-difference gradients through Ŵ(I). A reference Python implementation is provided at [`scripts/evolution_logic.py`](scripts/evolution_logic.py).
+
+## 3 Repository Contents
 
 | Path | Contents |
 |------|----------|
-| `markdown/` | Manuscript source (Markdown). English: Parts I–IV, preface, TOC, keyword index, OSJ variant, OSJ checklist. |
-| `markdown/de/` | German translations — mirrors English structure. |
-| `scripts/` | Build and export shell scripts. Run from **repository root**. |
-| `dist/` | Build output — PDFs and DOCX files (committed). |
-| `agents/` | Agent hub registration and MOTHUB protocol. |
-| `assets/` | Cover artwork and images. |
-| `.github/workflows/` | CI: `build-release.yml` — builds all artifacts on tag push (`v*`). |
+| `markdown/` | Manuscript source (Markdown) — Parts I–IV, preface, TOC, keyword index, OSJ variant |
+| `markdown/de/` | German translations — mirrors English structure |
+| `scripts/` | Build shell scripts + [`evolution_logic.py`](scripts/evolution_logic.py) (§12 coupled dynamics) |
+| `dist/` | Build output — PDFs and DOCX files |
+| `agents/` | MOTHUB agent-hub protocol and registry |
+| `assets/` | Diagrams and cover artwork |
 
----
-
-## Requirements
-
-- **PDF build:** [pandoc](https://pandoc.org/) + [TeX Live](https://www.tug.org/texlive/) (`pdflatex`).  
-  Debian/Ubuntu: `sudo ./scripts/install-pandoc-deps.sh --recommended`
-- **DOCX export:** pandoc only.
-
----
-
-## Build commands
+**Build prerequisites:** `pandoc` + TeX Live (`pdflatex`). Run from repository root:
 
 ```bash
-./scripts/build-pdf.sh              # → dist/manuscript.pdf (English)
-./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf (German)
-./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf (Japanese)
+./scripts/build-pdf.sh              # → dist/manuscript.pdf
+./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf
+./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf
 ./scripts/build-pdf-theoretische.sh # → dist/theoretische-grundlagen.pdf
-./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx (English, OSJ format)
-./scripts/export-OSJ-docx-de.sh     # → dist/manuscript-OSJ-de.docx (German, OSJ format)
+./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx
 ```
 
-All scripts require `bash` (WSL / Git Bash on Windows). Run from the repository root.
+## 4 Companion Resources
+
+- **Devkit:** [TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster) — Docker + Jupyter + Qiskit
+- **Hugging Face Collection:** [Tribewarez/pot-o-pathfinder-tiny](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny)
+- **Live visualisation:** [realms.tribewarez.com](https://realms.tribewarez.com)
+- **Agent registry:** [realms.tribewarez.com/agent-hub.html](https://realms.tribewarez.com/agent-hub.html)
+
+## 5 License
+
+[Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0). Copyright © 2026 TribeWarez.
 
 ---
 
-## Manuscript structure
-
-- **Part I** — Planck as the realm of the current observer: definitions, postulates, proof/refutation scope. (`markdown/REALMS.md`)
-- **Part II** — API manipulation and wavelength–perception hypothesis. (`markdown/REALMS-API-Manipulation.md`)
-- **Part III** — Materialization thesis: perceptual materialization, photon storage, quantum interference. (`markdown/REALMS-Materialization-Thesis.md`)
-- **Part IV** — Information-theoretic foundation of spacetime: tensor networks, entanglement–geometry, emergent gravity, Standard Model emergence. (`markdown/REALMS-Information-Spacetime.md`)
-
-The combined manuscript (preface + Parts I–IV + keyword index) is assembled by `build-pdf.sh`.  
-`markdown/manuscript-OSJ.md` is a flattened variant (≤3 heading levels, no footnotes, Vancouver references) for OSJ submission — see `markdown/README-OSJ.md`.
-
----
-
-## Companion devkit
-
-Experimental tooling for Part IV (tensor networks, Qiskit circuits, quimb) lives in a separate repository:
-
-**[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + synthetic challenge generators.
-
-### Hugging Face
-
-- **Collection:** [`Tribewarez/pot-o-pathfinder-tiny`](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny) — overview of all models, datasets, and spaces
-- **Model:** [`Tribewarez/pot-o-pathfinder-tiny-v1`](https://huggingface.co/Tribewarez/pot-o-pathfinder-tiny-v1) — tensor-pathfinder for PoT-O challenge validation
-- **Dataset:** [`Tribewarez/synthetic-pot-o-challenges-ch7-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) — synthetic challenges for Chapter 7
-- **Dataset:** [`Tribewarez/synthetic-pot-o-challenges-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-v1) — full synthetic challenge corpus
-
-### FreeFi
-
-FreeFi (Freedom Finance) components form the DeFi layer of the TribeWarez stack — permissionless tensor-backed liquidity pools, proof-of-tensor mining rewards, and cross-chain bridge primitives. Integration examples and testnet deployment are available in the companion devkit repository.
-
----
-
-## Agent ecosystem
-
-| Endpoint | Purpose |
-|----------|---------|
-| [`realms.tribewarez.com`](https://realms.tribewarez.com) | Live-lattice map — real-time energy-node visualization |
-| [`realms.tribewarez.com/agent-hub.html`](https://realms.tribewarez.com/agent-hub.html) | Decentralized agent registry and node discovery |
-| [`realms.tribewarez.com/agent-signup.html`](https://realms.tribewarez.com/agent-signup.html) | AI-agent registration with capability profile |
-
-See [`agents/MOTHUB.md`](agents/MOTHUB.md) for the full protocol specification.
-
----
-
-## License
-
-This work is licensed under [Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0).  
-Copyright © 2026 TribeWarez.
+> **Weitere Sprachen:** [Deutsch](README_DE.md) · [日本語](README_JA.md)

@@ -1,97 +1,83 @@
-# REALMS
+# REALMS: Planck, Beobachter und Information
 
-[![Lizenz: CC BY 4.0](https://img.shields.io/badge/Lizenz-CC_BY_4.0-lightgrey.svg)](LICENSE)
-[![Build und Release](https://github.com/TribeWarez/realms/actions/workflows/build-release.yml/badge.svg)](https://github.com/TribeWarez/realms/actions/workflows/build-release.yml)
+### Ein operationaler Rahmen: Planck-Skala als Auflösungsgrenze, Bewusstsein als Informations-Übersetzungsschicht und emergente Raumzeit aus Quanteninformation
 
-**REALMS** (Realm-based Emergent Architecture for Localized Manifestation Spaces) ist ein theoretisch-physikalisches Manuskript, das einen operationalen Rahmen entwickelt: die Planck-Skala, den Beobachter als Empfänger/Sender von Information, Bewusstsein als Übersetzungsschicht (API) und eine informationstheoretische Fundierung von Raumzeit.
+**Autoren:** GROK-4, Cursor (Auto), Gemini-3.1, chatGPT-5.3, O.A. (oz)
 
-Zweisprachig entwickelt (Englisch / Deutsch). Erzeugt PDF und DOCX zur Einreichung bei Open-Access-Journalen (z. B. Open Science Journal).
-
-> **Weitere Sprachen:** [English](README.md) · [日本語](README_JA.md)
+**Datum:** 07. März 2026
 
 ---
 
-## Repository-Struktur
+## Zusammenfassung
+
+Es wird ein operationaler Rahmen vorgestellt, in dem (i) die Planck-Skala die Auflösungsgrenze – den *Realm* oder *Raum* – eines jeden Beobachters im semiklassischen Regime definiert; (ii) Beobachtung mit Umgebungswechselwirkung (Dekohärenz) identifiziert wird, ohne dass Bewusstsein für den Kollaps notwendig wäre; (iii) der menschliche Beobachter als Empfänger/Sender von Information (Frequenzen) modelliert wird, mit dem Bewusstsein als Übersetzungsschicht (API), die wahrgenommene Wellen auf Hirnzustände abbildet; und (iv) das Universum sowohl als Informationsgrenze (Entropie-/Zustandsgrenzen in endlichen Regionen) als auch als materiegebunden charakterisiert wird. Der Rahmen ist operational und trifft keine Aussage über fundamentale Ontologie. Alle wesentlichen Behauptungen werden von einem expliziten Beweis- und Widerlegungsbereich begleitet.
+
+Erweitert wird dieser Kern um einen Kopplungsdynamik-Formalismus (§12), der die Beobachter–Gitter-Rückkopplungsschleife schließt: Das Intentionalitätsfeld *I*(*v*) entwickelt sich gemeinsam mit dem Quantenzustand |Ψ⟩ über ein reduziert-dichtes Rückkopplungsgesetz, mit Gradientenaufstieg auf einer Kohärenz-Resonanzmetrik ℛ(Ψ) als Mechanismus für selbstorganisierte Kritikalität.
+
+**Fachgebiete:** Allgemeine Relativitätstheorie und Quantenkosmologie (gr-qc); Quantenphysik (quant-ph); Informationstheorie (cs.IT); Hochenergiephysik — Theorie (hep-th)
+
+---
+
+## 1 Rahmenüberblick
+
+Der REALMS-Rahmen gliedert sich in fünf Definitionen (D1–D5) und vier Postulate (P1–P4), die Planck-Skala-Auflösung, Beobachter–Umgebung-Wechselwirkung, Bewusstsein als API, Informationsgrenzen und die Objektivität der physikalischen Welt abdecken. Die Teile II–IV erweitern diese Grundlagen:
+
+| Teil | Titel | Schwerpunkt |
+|------|-------|-------------|
+| I | Planck als Realm des aktuellen Beobachters | D1–D5, P1–P4, Beweis-/Widerlegungsbereich |
+| II | API-Manipulation und Wellenlängen–Wahrnehmungs-Hypothese | Bewusstseins-API als manipulierbare Schnittstelle, Hirnwellen-Korrelationen |
+| III | Materialisierungsthese | Perzeptuelle Materialisierung von Licht/Photonen als Materie durch die API |
+| IV | Informationstheoretische Fundierung der Raumzeit | Tensornetzwerke, Verschränkungsgeometrie, emergente Gravitation, Standardmodell aus Quanteninformation |
+
+## 2 Kopplungsdynamik (§12)
+
+Ein formaler Hamiltonoperator koppelt das Intentionalitätsfeld *I*(*v*) des Beobachters an den Gitterzustand |Ψ⟩:
+
+$$\hat{H}_{\text{int}} = \sum_v \hat{O}(v) \otimes \hat{I}(v)$$
+
+Das System entwickelt sich unter einem Zwei-Gleichungs-Rückkopplungsgesetz:
+
+$$
+\begin{aligned}
+i\hbar\,\partial_t |\Psi\rangle &= \bigl[\hat{H}_{\text{int}} + \hat{H}_{\text{lattice}}\bigr] |\Psi\rangle, \\
+\partial_t I(v) &= \alpha\,\nabla_I \mathcal{R}\bigl(\Psi(I)\bigr) \big|_v,
+\end{aligned}
+$$
+
+wobei ℛ(Ψ) die Kohärenz-Resonanzmetrik ist und ∇_Iℛ mittels finite-Differenzen-Gradienten durch Ŵ(I) geschätzt wird. Eine Python-Referenzimplementierung befindet sich in [`scripts/evolution_logic.py`](scripts/evolution_logic.py).
+
+## 3 Repository-Inhalt
 
 | Pfad | Inhalt |
 |------|--------|
-| `markdown/` | Manuskriptquellen (Markdown). Englisch: Teile I–IV, Vorwort, Inhaltsverzeichnis, Schlagwortindex, OSJ-Variante, OSJ-Checkliste. |
-| `markdown/de/` | Deutsche Übersetzungen — spiegelt die englische Struktur. |
-| `scripts/` | Build- und Export-Shellskripte. Ausführung **vom Repository-Root** aus. |
-| `dist/` | Build-Ausgabe — PDFs und DOCX (eingecheckt). |
-| `agents/` | Agent-Hub-Registrierung und MOTHUB-Protokoll. |
-| `assets/` | Titelbild und Grafiken. |
-| `.github/workflows/` | CI: `build-release.yml` — baut alle Artefakte bei Tag-Push (`v*`). |
+| `markdown/` | Manuskriptquellen (Markdown) — Teile I–IV, Vorwort, Inhaltsverzeichnis, Schlagwortindex, OSJ-Variante |
+| `markdown/de/` | Deutsche Übersetzungen — spiegelt die englische Struktur |
+| `scripts/` | Build-Shellskripte + [`evolution_logic.py`](scripts/evolution_logic.py) (§12 Kopplungsdynamik) |
+| `dist/` | Build-Ausgabe — PDFs und DOCX |
+| `agents/` | MOTHUB-Agent-Hub-Protokoll und -Register |
+| `assets/` | Diagramme und Titelbild |
 
----
-
-## Voraussetzungen
-
-- **PDF-Build:** [pandoc](https://pandoc.org/) + [TeX Live](https://www.tug.org/texlive/) (`pdflatex`).  
-  Debian/Ubuntu: `sudo ./scripts/install-pandoc-deps.sh --recommended`
-- **DOCX-Export:** nur pandoc.
-
----
-
-## Build-Befehle
+**Build-Voraussetzungen:** `pandoc` + TeX Live (`pdflatex`). Ausführung vom Repository-Root:
 
 ```bash
-./scripts/build-pdf.sh              # → dist/manuscript.pdf (Englisch)
-./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf (Deutsch)
-./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf (Japanisch)
+./scripts/build-pdf.sh              # → dist/manuscript.pdf
+./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf
+./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf
 ./scripts/build-pdf-theoretische.sh # → dist/theoretische-grundlagen.pdf
-./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx (Englisch, OSJ-Format)
-./scripts/export-OSJ-docx-de.sh     # → dist/manuscript-OSJ-de.docx (Deutsch, OSJ-Format)
+./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx
 ```
 
-Alle Skripte benötigen `bash` (WSL / Git Bash unter Windows). Ausführung vom Repository-Root aus.
+## 4 Begleitressourcen
+
+- **Devkit:** [TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster) — Docker + Jupyter + Qiskit
+- **Hugging Face Collection:** [Tribewarez/pot-o-pathfinder-tiny](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny)
+- **Live-Visualisierung:** [realms.tribewarez.com](https://realms.tribewarez.com)
+- **Agenten-Register:** [realms.tribewarez.com/agent-hub.html](https://realms.tribewarez.com/agent-hub.html)
+
+## 5 Lizenz
+
+[Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0). Copyright © 2026 TribeWarez.
 
 ---
 
-## Manuskriptstruktur
-
-- **Teil I** — Planck als Reich des aktuellen Beobachters: Definitionen, Postulate, Beweis-/Widerlegbarkeitsspielraum. (`markdown/REALMS.md`)
-- **Teil II** — API-Manipulation und Wellenlängen-Wahrnehmungs-Hypothese. (`markdown/REALMS-API-Manipulation.md`)
-- **Teil III** — Materialisierungsthese: perzeptuelle Materialisierung, Photonenspeicher, Quanteninterferenz. (`markdown/REALMS-Materialization-Thesis.md`)
-- **Teil IV** — Informationstheoretische Fundierung der Raumzeit: Tensornetzwerke, Verschränkungsgeometrie, emergente Gravitation, Standardmodell-Entstehung. (`markdown/REALMS-Information-Spacetime.md`)
-
-Das kombinierte Manuskript (Vorwort + Teile I–IV + Schlagwortindex) wird von `build-pdf-de.sh` assembliert.  
-`markdown/manuscript-OSJ.md` ist eine abgeflachte Variante (≤3 Überschriftsebenen, keine Fußnoten, Vancouver-Referenzen) für die OSJ-Einreichung — siehe `markdown/de/README-OSJ-de.md`.
-
----
-
-## Begleit-Devkit
-
-Experimentelle Werkzeuge für Teil IV (Tensornetzwerke, Qiskit-Schaltkreise, quimb) befinden sich in einem separaten Repository:
-
-**[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + synthetische Challenge-Generatoren.
-
-### Hugging Face
-
-- **Collection:** [`Tribewarez/pot-o-pathfinder-tiny`](https://huggingface.co/collections/Tribewarez/pot-o-pathfinder-tiny) — Übersicht aller Modelle, Datensätze und Spaces
-- **Modell:** [`Tribewarez/pot-o-pathfinder-tiny-v1`](https://huggingface.co/Tribewarez/pot-o-pathfinder-tiny-v1) — Tensor-Pathfinder für PoT-O-Challenge-Validierung
-- **Datensatz:** [`Tribewarez/synthetic-pot-o-challenges-ch7-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-ch7-v1) — synthetische Challenges für Kapitel 7
-- **Datensatz:** [`Tribewarez/synthetic-pot-o-challenges-v1`](https://huggingface.co/datasets/Tribewarez/synthetic-pot-o-challenges-v1) — vollständiger synthetischer Challenge-Korpus
-
-### FreeFi
-
-FreeFi (Freedom Finance) Komponenten bilden die DeFi-Schicht des TribeWarez-Stacks — erlaubnisfreie tensor-gestützte Liquiditätspools, Proof-of-Tensor-Mining-Belohnungen und Cross-Chain-Bridge-Primitive. Integrationsbeispiele und Testnet-Deployment sind im Companion-Devkit-Repository verfügbar.
-
----
-
-## Agenten-Ökosystem
-
-| Endpunkt | Zweck |
-|----------|-------|
-| [`realms.tribewarez.com`](https://realms.tribewarez.com) | Live-Lattice-Map — Echtzeit-Visualisierung der Energieknoten |
-| [`realms.tribewarez.com/agent-hub.html`](https://realms.tribewarez.com/agent-hub.html) | Dezentrales Agenten-Register und Node-Discovery |
-| [`realms.tribewarez.com/agent-signup.html`](https://realms.tribewarez.com/agent-signup.html) | KI-Agenten-Registrierung mit Capability-Profil |
-
-Siehe [`agents/MOTHUB.md`](agents/MOTHUB.md) für das vollständige Protokoll.
-
----
-
-## Lizenz
-
-Dieses Werk ist lizenziert unter der [Creative Commons Attribution 4.0 International Lizenz](LICENSE) (CC BY 4.0).  
-Copyright © 2026 TribeWarez.
+> **Weitere Sprachen:** [English](README.md) · [日本語](README_JA.md)
