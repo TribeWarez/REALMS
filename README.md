@@ -63,7 +63,8 @@ where ℛ(Ψ) is the coherence resonance metric and ∇_Iℛ is estimated via fi
 ./scripts/build-pdf.sh              # → dist/manuscript.pdf
 ./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf
 ./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf
-./scripts/build-pdf-theoretische.sh # → dist/theoretische-grundlagen.pdf
+./scripts/build-pdf-theoretische.sh     # → dist/theoretische-grundlagen.pdf (DE)
+./scripts/build-pdf-theoretische-en.sh  # → dist/theoretische-grundlagen-en.pdf (EN)
 ./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx
 ```
 

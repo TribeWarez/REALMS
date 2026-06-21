@@ -63,7 +63,8 @@ wobei ℛ(Ψ) die Kohärenz-Resonanzmetrik ist und ∇_Iℛ mittels finite-Diffe
 ./scripts/build-pdf.sh              # → dist/manuscript.pdf
 ./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf
 ./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf
-./scripts/build-pdf-theoretische.sh # → dist/theoretische-grundlagen.pdf
+./scripts/build-pdf-theoretische.sh     # → dist/theoretische-grundlagen.pdf (DE)
+./scripts/build-pdf-theoretische-en.sh  # → dist/theoretische-grundlagen-en.pdf (EN)
 ./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx
 ```
 

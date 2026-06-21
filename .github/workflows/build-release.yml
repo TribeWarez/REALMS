@@ -48,6 +48,9 @@ jobs:
       - name: Build PDF (JA)
         run: ./scripts/build-pdf-ja.sh
 
+      - name: Build PDF (Theoretische Grundlagen EN)
+        run: ./scripts/build-pdf-theoretische-en.sh
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -58,6 +61,7 @@ jobs:
             dist/manuscript-OSJ.docx
             dist/manuscript-OSJ-de.docx
             dist/theoretische-grundlagen.pdf
+            dist/theoretische-grundlagen-en.pdf
             dist/manuscript-ja.pdf
 
       - name: Create Release and attach assets
@@ -69,6 +73,7 @@ jobs:
             dist/manuscript-OSJ.docx
             dist/manuscript-OSJ-de.docx
             dist/theoretische-grundlagen.pdf
+            dist/theoretische-grundlagen-en.pdf
             dist/manuscript-ja.pdf
           generate_release_notes: true
         env:
