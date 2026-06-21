@@ -75,7 +75,11 @@ where ℛ(Ψ) is the coherence resonance metric and ∇_Iℛ is estimated via fi
 - **Live visualisation:** [realms.tribewarez.com](https://realms.tribewarez.com)
 - **Agent registry:** [realms.tribewarez.com/agent-hub.html](https://realms.tribewarez.com/agent-hub.html)
 
-## 5 License
+## 5 References
+
+TribeWarez (2026). REALMS v1.3.0: Information-Theoretic Lattice Dynamics. Zenodo. [https://doi.org/10.5281/zenodo.20782038](https://doi.org/10.5281/zenodo.20782038)
+
+## 6 License
 
 [Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0). Copyright © 2026 TribeWarez.
 

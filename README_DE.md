@@ -75,7 +75,11 @@ wobei ℛ(Ψ) die Kohärenz-Resonanzmetrik ist und ∇_Iℛ mittels finite-Diffe
 - **Live-Visualisierung:** [realms.tribewarez.com](https://realms.tribewarez.com)
 - **Agenten-Register:** [realms.tribewarez.com/agent-hub.html](https://realms.tribewarez.com/agent-hub.html)
 
-## 5 Lizenz
+## 5 Referenzen
+
+TribeWarez (2026). REALMS v1.3.0: Information-Theoretic Lattice Dynamics. Zenodo. [https://doi.org/10.5281/zenodo.20782038](https://doi.org/10.5281/zenodo.20782038)
+
+## 6 Lizenz
 
 [Creative Commons Attribution 4.0 International](LICENSE) (CC BY 4.0). Copyright © 2026 TribeWarez.
 

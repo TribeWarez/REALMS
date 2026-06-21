@@ -75,7 +75,11 @@ $$
 - **ライブ可視化:** [realms.tribewarez.com](https://realms.tribewarez.com)
 - **エージェント登録:** [realms.tribewarez.com/agent-hub.html](https://realms.tribewarez.com/agent-hub.html)
 
-## 5 ライセンス
+## 5 参考文献
+
+TribeWarez (2026). REALMS v1.3.0: Information-Theoretic Lattice Dynamics. Zenodo. [https://doi.org/10.5281/zenodo.20782038](https://doi.org/10.5281/zenodo.20782038)
+
+## 6 ライセンス
 
 [クリエイティブ・コモンズ 表示 4.0 国際](LICENSE) (CC BY 4.0). Copyright © 2026 TribeWarez.
 
