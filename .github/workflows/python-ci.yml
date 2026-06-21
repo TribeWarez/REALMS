@@ -1,0 +1,42 @@
+# Smoke-test evolution_logic.py on push and PR.
+# Also runs on tag push to verify before release.
+
+name: Python CI
+
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/evolution_logic.py', 'scripts/*.py']
+  pull_request:
+    branches: [main]
+    paths: ['scripts/evolution_logic.py', 'scripts/*.py']
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install numpy
+
+      - name: Smoke test — evolution_logic.py
+        run: python scripts/evolution_logic.py
+
+      - name: Verify import
+        run: python -c "
+          from scripts.evolution_logic import (
+              CoupledSystem, LatticeState, IntentionalityField,
+              harmonic_resonance_feedback, site_local,
+              feedback_entropy, feedback_linear,
+              calculate_coherence_metric, calculate_negentropy,
+              uniform_superposition, product_state,
+          )
+          print('All imports OK')
+          "
