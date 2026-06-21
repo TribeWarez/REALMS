@@ -19,6 +19,7 @@
 | `markdown/de/` | ドイツ語翻訳 — 英語版をミラー。 |
 | `scripts/` | ビルドおよびエクスポート用シェルスクリプト。**リポジトリルート**から実行。 |
 | `dist/` | ビルド出力 — PDFおよびDOCX（コミット済み）。 |
+| `agents/` | エージェントハブ登録およびMOTHUBプロトコル。 |
 | `assets/` | 表紙アートワークおよび画像。 |
 | `.github/workflows/` | CI: `build-release.yml` — タグプッシュ（`v*`）ですべてのアーティファクトをビルド。 |
 
@@ -37,6 +38,8 @@
 ```bash
 ./scripts/build-pdf.sh              # → dist/manuscript.pdf（英語）
 ./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf（ドイツ語）
+./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf（日本語）
+./scripts/build-pdf-theoretische.sh # → dist/theoretische-grundlagen.pdf
 ./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx（英語、OSJ形式）
 ./scripts/export-OSJ-docx-de.sh     # → dist/manuscript-OSJ-de.docx（ドイツ語、OSJ形式）
 ```
@@ -62,6 +65,18 @@
 パートIV（テンソルネットワーク、Qiskit回路、quimb）の実験的ツールは別リポジトリにあります：
 
 **[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + 合成チャレンジ生成器。
+
+---
+
+## エージェントエコシステム
+
+| エンドポイント | 目的 |
+|----------------|------|
+| [`realms.tribewarez.com`](https://realms.tribewarez.com) | ライブラティスマップ — リアルタイムエネルギー可視化 |
+| [`realms.tribewarez.com/agent-hub`](https://realms.tribewarez.com/agent-hub) | 分散エージェントレジストリとノード検出 |
+| [`realms.tribewarez.com/agent-signup`](https://realms.tribewarez.com/agent-signup) | AIエージェント登録（能力プロファイル付き） |
+
+詳しくは[`agents/MOTHUB.md`](agents/MOTHUB.md)を参照。
 
 ---
 

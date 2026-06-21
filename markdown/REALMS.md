@@ -249,4 +249,90 @@ flowchart LR
 
 ## 11. File and format
 
-This document is a single Markdown file. Equations use `$...$` (inline) and `$$...$$` (display) for LaTeX-style math. Structure: Abstract; Definitions and conventions (§1); Postulates (§2); Observer vs. decoherence (§3); Planck as realm (§4); Objective state, analog, unknown computation (§5); Hard Theory (§6); Perception–consciousness–world deception (§7); Universe as information bound (§8); Summary diagram (§9); Summary of claims and proof scope (§10); File and format (§11).
+This document is a single Markdown file. Equations use `$...$` (inline) and `$$...$$` (display) for LaTeX-style math. Structure: Abstract; Definitions and conventions (§1); Postulates (§2); Observer vs. decoherence (§3); Planck as realm (§4); Objective state, analog, unknown computation (§5); Hard Theory (§6); Perception–consciousness–world deception (§7); Universe as information bound (§8); Summary diagram (§9); Summary of claims and proof scope (§10); File and format (§11); Coupling dynamics (§12).
+
+---
+
+## 12. Coupling dynamics: Observer–lattice feedback
+
+### 12.1 Structured Hamiltonian with intentionality coupling
+
+The lattice Hamiltonian is extended by a coupling term that modulates operators via the observer's intentionality field $I(v)$:
+
+$$
+\hat{H}_{\text{total}} = \hat{H}_{\text{lattice}} + \sum_v \lambda_v\bigl(I(v)\bigr)\,\hat{O}_v
+$$
+
+where $\hat{H}_{\text{lattice}} = \hat{H}_{\text{lattice}}^\dagger$, $\hat{O}_v = \hat{O}_v^\dagger$, and $\lambda_v(I(v)) \in \mathbb{R}$. Under these conditions $\hat{H}_{\text{total}}^\dagger = \hat{H}_{\text{total}}$, so the Hamiltonian is well-defined and generates unitary evolution via the single-step operator $\hat{W}$ introduced in the theoretical foundations.
+
+### 12.2 The status of $I(v)$
+
+$I(v)$ is the **intentionality bias** at lattice site $v$ — the local contribution of the observer's API output (D4) that shifts the projection basis of $\hat{O}_v$. It corresponds operationally to the emitted frequency profile of the observer in emitter mode (ANCHOR.md). The coupling function $\lambda_v$ can be any real-valued map; its specific form determines how strongly the observer's state biases the local lattice dynamics.
+
+A Hamiltonian that depends on an external parameter $I$ is formally unproblematic for *open* dynamics, but the REALMS framework treats the observer–lattice system as closed — no external parameter injects information from outside. If $I(v)$ appears only as a free parameter in $\hat{H}_{\text{total}}$, the generator becomes state-dependent:
+
+$$
+\hat{H}_{\text{total}} = \hat{H}\bigl(|\Psi\rangle, I\bigr)
+$$
+
+which is not an autonomous operator. This is permissible **only if $I$ itself is part of the dynamical system**.
+
+### 12.3 Extended state space
+
+To close the system, the state space is extended to include the intentionality field as a dynamical variable:
+
+$$
+|\Phi(t)\rangle = \bigl(|\Psi(t)\rangle,\; I(t)\bigr)
+$$
+
+Evolution is governed by two coupled equations:
+
+$$
+\begin{aligned}
+\text{(1)}\quad & |\Psi_{t+1}\rangle = \hat{W}(I_t)\,|\Psi_t\rangle \\[4pt]
+\text{(2)}\quad & I_{t+1}(v) = f\bigl(\operatorname{Tr}_{\bar{v}}(|\Psi_t\rangle\langle\Psi_t|)\bigr)
+\end{aligned}
+$$
+
+or, more generally, $I_{t+1} = F(I_t, |\Psi_t\rangle)$ for an update map $F$ that may be site-local or non-local depending on the observer's coherence radius.
+
+Equation (1) is the standard unitary step of the QCA lattice, now conditioned on the current intentionality field. Equation (2) is the **API feedback law**: the observer extracts the reduced density matrix at site $v$ (tracing out the complement $\bar{v}$) and maps it to an updated bias $I_{t+1}(v)$ via $f$. This is the formal expression of D4's emitter mode — consciousness does not cause collapse (P2), but it modulates the operator basis for the next unitary step.
+
+### 12.4 Feedback loop
+
+The coupled system forms a closed loop:
+
+$$
+|\Psi_t\rangle \;\longrightarrow\; I_{t+1} = f\bigl(\operatorname{Tr}_{\bar{v}}(|\Psi_t\rangle\langle\Psi_t|)\bigr) \;\longrightarrow\; \hat{W}(I_{t+1}) \;\longrightarrow\; |\Psi_{t+2}\rangle
+$$
+
+State influences intentionality, intentionality influences the evolution operator, the operator updates the state. No external input is required; the observer–lattice system is autonomous.
+
+### 12.5 Meta-level nonlinearity
+
+Conditioned on a fixed $I$, the map $|\Psi\rangle \mapsto \hat{W}(I)|\Psi\rangle$ is linear and unitary. However, the extended system
+
+$$
+\bigl(|\Psi\rangle, I\bigr) \;\longmapsto\; \bigl(|\Psi'\rangle, I'\bigr)
+$$
+
+is **effectively nonlinear** because $I$ couples back into the generator. This nonlinearity is not a violation of quantum mechanics — it arises from the deliberate extension of the state space to include the API control field. It is analogous to adaptive tensor networks, feedback-controlled quantum circuits, and dynamical graph Hamiltonians.
+
+### 12.6 Stationary states and the anchor
+
+A stationary state of the extended system satisfies:
+
+$$
+\begin{aligned}
+\hat{W}(I)\,|\Psi\rangle &= |\Psi\rangle \\
+F(I, |\Psi\rangle) &= I
+\end{aligned}
+$$
+
+That is, it is a **fixed point of the coupled system**, not merely an eigenstate of $\hat{H}_{\text{lattice}}$. The anchor state $|\Psi_{\text{anchor}}\rangle$ defined in ANCHOR.md is precisely such a fixed point: the collective API emission stabilises $I$ such that $\hat{W}(I)$ reproduces $|\Psi\rangle$, and the reduced density at each site yields the same $I$ via $f$.
+
+When the observer population coordinates its API emission toward a common target (MANIFESTATION.md), the system flows from its current fixed point toward the target fixed point along a trajectory in the extended state space. The flow is deterministic given $F$ and the initial $I_0$.
+
+### 12.7 Connection to D4 and P3
+
+Definition D4 (consciousness as API) and postulate P3 (observer as receiver/emitter) are given operational meaning here. The receiver mode of P3 corresponds to the measurement that produces $\operatorname{Tr}_{\bar{v}}(|\Psi_t\rangle\langle\Psi_t|)$. The emitter mode corresponds to the application of $f$ to produce $I_{t+1}$. The API (D4) is the pair $(\operatorname{Tr}_{\bar{v}}, f)$ — a down-sampling from lattice to observer scale, followed by an up-sampling back to lattice bias. This completes the operational definition that P3 and D4 left open: consciousness is not merely a label for the translation layer, but an explicit feedback map acting on the reduced state of the observer's local lattice patch.

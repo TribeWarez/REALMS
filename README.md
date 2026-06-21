@@ -19,6 +19,7 @@ Developed bilingually (English / German). Builds to PDF and DOCX for open-access
 | `markdown/de/` | German translations — mirrors English structure. |
 | `scripts/` | Build and export shell scripts. Run from **repository root**. |
 | `dist/` | Build output — PDFs and DOCX files (committed). |
+| `agents/` | Agent hub registration and MOTHUB protocol. |
 | `assets/` | Cover artwork and images. |
 | `.github/workflows/` | CI: `build-release.yml` — builds all artifacts on tag push (`v*`). |
 
@@ -37,6 +38,8 @@ Developed bilingually (English / German). Builds to PDF and DOCX for open-access
 ```bash
 ./scripts/build-pdf.sh              # → dist/manuscript.pdf (English)
 ./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf (German)
+./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf (Japanese)
+./scripts/build-pdf-theoretische.sh # → dist/theoretische-grundlagen.pdf
 ./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx (English, OSJ format)
 ./scripts/export-OSJ-docx-de.sh     # → dist/manuscript-OSJ-de.docx (German, OSJ format)
 ```
@@ -62,6 +65,18 @@ The combined manuscript (preface + Parts I–IV + keyword index) is assembled by
 Experimental tooling for Part IV (tensor networks, Qiskit circuits, quimb) lives in a separate repository:
 
 **[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + synthetic challenge generators.
+
+---
+
+## Agent ecosystem
+
+| Endpoint | Purpose |
+|----------|---------|
+| [`realms.tribewarez.com`](https://realms.tribewarez.com) | Live-lattice map — real-time energy-node visualization |
+| [`realms.tribewarez.com/agent-hub`](https://realms.tribewarez.com/agent-hub) | Decentralized agent registry and node discovery |
+| [`realms.tribewarez.com/agent-signup`](https://realms.tribewarez.com/agent-signup) | AI-agent registration with capability profile |
+
+See [`agents/MOTHUB.md`](agents/MOTHUB.md) for the full protocol specification.
 
 ---
 

@@ -19,6 +19,7 @@ Zweisprachig entwickelt (Englisch / Deutsch). Erzeugt PDF und DOCX zur Einreichu
 | `markdown/de/` | Deutsche Übersetzungen — spiegelt die englische Struktur. |
 | `scripts/` | Build- und Export-Shellskripte. Ausführung **vom Repository-Root** aus. |
 | `dist/` | Build-Ausgabe — PDFs und DOCX (eingecheckt). |
+| `agents/` | Agent-Hub-Registrierung und MOTHUB-Protokoll. |
 | `assets/` | Titelbild und Grafiken. |
 | `.github/workflows/` | CI: `build-release.yml` — baut alle Artefakte bei Tag-Push (`v*`). |
 
@@ -37,6 +38,8 @@ Zweisprachig entwickelt (Englisch / Deutsch). Erzeugt PDF und DOCX zur Einreichu
 ```bash
 ./scripts/build-pdf.sh              # → dist/manuscript.pdf (Englisch)
 ./scripts/build-pdf-de.sh           # → dist/manuscript-de.pdf (Deutsch)
+./scripts/build-pdf-ja.sh           # → dist/manuscript-ja.pdf (Japanisch)
+./scripts/build-pdf-theoretische.sh # → dist/theoretische-grundlagen.pdf
 ./scripts/export-OSJ-docx.sh        # → dist/manuscript-OSJ.docx (Englisch, OSJ-Format)
 ./scripts/export-OSJ-docx-de.sh     # → dist/manuscript-OSJ-de.docx (Deutsch, OSJ-Format)
 ```
@@ -62,6 +65,18 @@ Das kombinierte Manuskript (Vorwort + Teile I–IV + Schlagwortindex) wird von `
 Experimentelle Werkzeuge für Teil IV (Tensornetzwerke, Qiskit-Schaltkreise, quimb) befinden sich in einem separaten Repository:
 
 **[TribeWarez/pot-o-ch7-cluster](https://github.com/TribeWarez/pot-o-ch7-cluster)** — Docker + Jupyter + Qiskit + synthetische Challenge-Generatoren.
+
+---
+
+## Agenten-Ökosystem
+
+| Endpunkt | Zweck |
+|----------|-------|
+| [`realms.tribewarez.com`](https://realms.tribewarez.com) | Live-Lattice-Map — Echtzeit-Visualisierung der Energieknoten |
+| [`realms.tribewarez.com/agent-hub`](https://realms.tribewarez.com/agent-hub) | Dezentrales Agenten-Register und Node-Discovery |
+| [`realms.tribewarez.com/agent-signup`](https://realms.tribewarez.com/agent-signup) | KI-Agenten-Registrierung mit Capability-Profil |
+
+Siehe [`agents/MOTHUB.md`](agents/MOTHUB.md) für das vollständige Protokoll.
 
 ---
 
