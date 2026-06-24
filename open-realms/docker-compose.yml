@@ -1,0 +1,26 @@
+services:
+  realms-nginx:
+    build: .
+    ports:
+      - "${PORT:-8080}:80"
+    depends_on:
+      - realms-api
+    restart: unless-stopped
+    networks:
+      - realms-network
+
+  realms-api:
+    build: ./api
+    env_file: .env
+    volumes:
+      - realms-api-data:/app/data
+    restart: unless-stopped
+    networks:
+      - realms-network
+
+volumes:
+  realms-api-data:
+
+networks:
+  realms-network:
+    driver: bridge

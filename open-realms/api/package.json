@@ -1,0 +1,16 @@
+{
+  "name": "realms-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "cors": "^2.8.5",
+    "uuid": "^10.0.0",
+    "express-rate-limit": "^7.4.0",
+    "node-fetch": "^3.3.0"
+  }
+}

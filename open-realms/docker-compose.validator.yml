@@ -1,0 +1,22 @@
+services:
+  pot-o-validator:
+    build:
+      context: https://github.com/TribeWarez/pot-o-validator.git
+      dockerfile: Dockerfile
+    ports:
+      - "${VALIDATOR_PORT:-8900}:8900"
+    environment:
+      - PORT=8900
+      - PEER_NETWORK_MODE=${PEER_NETWORK_MODE:-vpn_mesh}
+      - BOOTSTRAP_URLS=${BOOTSTRAP_URLS:-http://bootstrap.tribewarez.com/peers}
+      - SOLANA_RPC_URL=${SOLANA_RPC_URL:-http://solana-rpc:8899}
+      - RELAYER_KEYPAIR_PATH=/keys/relayer.json
+    volumes:
+      - validator-data:/data
+      - ./keys:/keys:ro
+    restart: unless-stopped
+    networks:
+      - realms-network
+
+volumes:
+  validator-data:
